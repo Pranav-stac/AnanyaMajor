@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-const api = axios.create({ baseURL: '/api' })
+/** Production FastAPI on EC2 (change IP/host if your instance changes). */
+const API_BASE_URL = 'http://13.126.188.165:8000'
+
+const api = axios.create({ baseURL: API_BASE_URL })
 
 export interface Company {
   id: string
