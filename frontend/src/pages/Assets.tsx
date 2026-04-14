@@ -8,6 +8,14 @@ const DATA_CLASSES = ['PII', 'PHI', 'Financial', 'IP', 'Public']
 const SENSITIVITIES = ['critical', 'high', 'medium', 'low']
 const CLOUDS = ['aws', 'azure', 'gcp', 'on-prem']
 
+/** Alternate approved cloud for broker (not shown in UI — set from current only). */
+function inferredTargetCloud(current: string): string {
+  if (current === 'aws') return 'azure'
+  if (current === 'azure') return 'aws'
+  if (current === 'gcp') return 'aws'
+  return 'aws'
+}
+
 export default function Assets() {
   const [assets, setAssets] = useState<DataAsset[]>([])
   const [companies, setCompanies] = useState<Company[]>([])
@@ -16,7 +24,7 @@ export default function Assets() {
   const [saving, setSaving] = useState(false)
   const [form, setForm] = useState({
     id: '', company_id: '', name: '', data_class: 'PII', sensitivity: 'high',
-    residency_constraints: '', volume_gb: 100, current_cloud: 'aws', target_cloud: 'azure',
+    residency_constraints: '', volume_gb: 100, current_cloud: 'aws',
   })
 
   const reload = () =>
@@ -29,6 +37,7 @@ export default function Assets() {
     try {
       await createAsset({
         ...form,
+        target_cloud: inferredTargetCloud(form.current_cloud),
         volume_gb: Number(form.volume_gb),
         residency_constraints: form.residency_constraints ? form.residency_constraints.split(',').map(r => r.trim()) : [],
       })
@@ -104,19 +113,15 @@ export default function Assets() {
                 placeholder="US, EU"
                 className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className="block text-xs font-medium text-slate-600 mb-1.5">Current Cloud</label>
               <select value={form.current_cloud} onChange={e => setForm(f => ({ ...f, current_cloud: e.target.value }))}
-                className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+                className="w-full max-w-md bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
                 {CLOUDS.map(c => <option key={c}>{c}</option>)}
               </select>
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-slate-600 mb-1.5">Target Cloud</label>
-              <select value={form.target_cloud} onChange={e => setForm(f => ({ ...f, target_cloud: e.target.value }))}
-                className="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
-                {CLOUDS.map(c => <option key={c}>{c}</option>)}
-              </select>
+              <p className="text-xs text-slate-500 mt-1">
+                Migration target is set automatically to the alternate primary provider ({inferredTargetCloud(form.current_cloud).toUpperCase()}) for evaluation.
+              </p>
             </div>
           </div>
           <div className="flex gap-2">
