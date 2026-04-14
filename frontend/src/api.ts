@@ -30,6 +30,7 @@ export interface CostModel {
   exit_penalty: number
   engineering_effort_cost: number
   downtime_risk_cost: number
+  compliance_overhead?: number
   total_migration_cost: number
   monthly_savings: number
   breakeven_months: number | null

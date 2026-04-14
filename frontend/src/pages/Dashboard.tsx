@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend
 } from 'recharts'
 import {
-  TrendingUp, Shield, Server, DollarSign, Zap,
+  Shield, Server, DollarSign, Zap,
   ArrowRight, CheckCircle, XCircle, AlertTriangle
 } from 'lucide-react'
 import { getStats, getDecisions, type DashboardStats, type Decision } from '../api'
@@ -140,7 +140,7 @@ export default function Dashboard() {
               <YAxis tick={{ fill: '#94a3b8', fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 8, color: '#0f172a' }} />
               <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                {compData.map((entry, i) => (
+                {compData.map((_, i) => (
                   <Cell key={i} fill={[COLORS.pass, COLORS.fail, COLORS.warn][i]} />
                 ))}
               </Bar>

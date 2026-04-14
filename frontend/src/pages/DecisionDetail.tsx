@@ -161,7 +161,7 @@ export default function DecisionDetail() {
           </div>
 
           {/* Policy packs */}
-          {cs.evidence?.active_policy_packs && (
+          {Array.isArray(cs.evidence?.active_policy_packs) && (
             <div className="mt-3 pt-3 border-t border-slate-200 flex flex-wrap gap-1">
               <span className="text-xs text-slate-500">Policy packs:</span>
               {(cs.evidence.active_policy_packs as string[]).map(p => (
@@ -196,7 +196,7 @@ export default function DecisionDetail() {
               { label: 'Exit Penalty', value: cm.exit_penalty },
               { label: 'Engineering', value: cm.engineering_effort_cost },
               { label: 'Downtime Risk', value: cm.downtime_risk_cost },
-              { label: 'Compliance Overhead', value: (cm as Record<string, number>).compliance_overhead ?? 0 },
+              { label: 'Compliance Overhead', value: cm.compliance_overhead ?? 0 },
               { label: 'Total Migration Cost', value: cm.total_migration_cost },
               { label: 'Breakeven', value: null, text: cm.breakeven_months ? `${cm.breakeven_months} months` : '∞' },
             ].map(({ label, value, text }) => (
