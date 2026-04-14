@@ -1,7 +1,13 @@
 import axios from 'axios'
 
-/** Production FastAPI on EC2 (change IP/host if your instance changes). */
-const API_BASE_URL = 'http://13.126.188.165:8000'
+/**
+ * Use `/api` so the browser stays on the same scheme as the page (avoids mixed-content blocks on HTTPS).
+ * - Dev: Vite proxies `/api` → `http://localhost:8000`
+ * - Amplify: rewrite `/api/<*>` → `https://<your-api-domain>/<*>` (TLS on EC2 via Nginx + Let's Encrypt; `http://` targets are rejected)
+ * Optional: set `VITE_API_BASE_URL` to an **https** API URL to call the API host directly.
+ */
+const API_BASE_URL =
+  (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim() || '/api'
 
 const api = axios.create({ baseURL: API_BASE_URL })
 
