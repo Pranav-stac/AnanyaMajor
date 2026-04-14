@@ -1,9 +1,6 @@
 import axios from 'axios'
 
-/** Production API. Dev uses `/api` → Vite proxy → localhost:8000. */
-const API_BASE_URL = import.meta.env.DEV
-  ? '/api'
-  : 'https://api.ananya.praanav.in'
+const API_BASE_URL = 'https://api.ananya.praanav.in'
 
 const api = axios.create({ baseURL: API_BASE_URL })
 
