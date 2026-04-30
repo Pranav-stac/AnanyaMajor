@@ -25,8 +25,8 @@ export default function Sidebar() {
             <Zap size={16} className="text-white" />
           </div>
           <div>
-            <p className="text-sm font-bold text-slate-900 leading-tight">Cloud Agility</p>
-            <p className="text-xs text-indigo-600 leading-tight font-medium">Broker</p>
+            <p className="text-sm font-bold text-slate-900 leading-tight">Multicloud</p>
+            <p className="text-xs text-indigo-600 leading-tight font-medium">Optimiser</p>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function Sidebar() {
       {/* Footer */}
       <div className="px-4 py-4 border-t border-slate-200">
         <div className="text-xs text-slate-500">
-          <p className="font-semibold text-slate-700">Cloud Agility Broker</p>
+          <p className="font-semibold text-slate-700">Multicloud Optimiser</p>
           <p>v1.0.0 · MVP</p>
           <p className="mt-1">AWS · Azure · 6 Policy Packs</p>
         </div>

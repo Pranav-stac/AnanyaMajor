@@ -1,5 +1,5 @@
 """
-Cloud Agility Broker — FastAPI Backend
+Multicloud Optimiser — FastAPI Backend
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ from report import build_json_report, build_pdf_report
 models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI(
-    title="Cloud Agility Broker",
+    title="Multicloud Optimiser",
     description="Automated cloud migration decision engine",
     version="1.0.0",
 )
@@ -672,3 +672,9 @@ def dashboard_stats(db: Session = Depends(database.get_db)):
         "compliance_pass_rate": round(comp_pass / total * 100, 1) if total else 0,
         "no_hard_failures_rate": round(no_hard_fail / total * 100, 1) if total else 0,
     }
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

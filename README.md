@@ -1,4 +1,4 @@
-# Cloud Agility Broker
+# Multicloud Optimiser
 
 An automated decision engine that determines whether a company's data should stay on AWS, move to Azure, or remain where it is — based on legal eligibility and total migration economics.
 
@@ -107,4 +107,4 @@ Interactive API docs: **http://localhost:8000/docs**
 
 ---
 
-*Built for the Cloud Agility Broker PRD · MVP scope: AWS + Azure · Terraform-based provisioning*
+*Built for the Multicloud Optimiser PRD · MVP scope: AWS + Azure · Terraform-based provisioning*

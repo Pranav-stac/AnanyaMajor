@@ -1,5 +1,5 @@
 """
-Seed demo data for the Cloud Agility Broker.
+Seed demo data for Mulyicloud Optimiser.
 Run once to populate the SQLite database with realistic scenarios.
 """
 

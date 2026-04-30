@@ -21,7 +21,7 @@ import uuid
 
 AWS_TEMPLATE = """\
 # ============================================================
-# Cloud Agility Broker — Generated Terraform (AWS)
+# Multicloud Optimiser — Generated Terraform (AWS)
 # Decision ID : {decision_id}
 # Generated   : {generated_at}
 # Data Asset  : {asset_name}
@@ -78,7 +78,7 @@ resource "aws_kms_key" "data_key" {{
     Company     = var.company_id
     DataAsset   = var.asset_id
     DataClass   = "{data_class}"
-    ManagedBy   = "CloudAgilityBroker"
+    ManagedBy   = "MulticloudOptimiser"
     DecisionID  = "{decision_id}"
   }}
 }}
@@ -97,7 +97,7 @@ resource "aws_s3_bucket" "data_bucket" {{
     Company     = var.company_id
     DataAsset   = var.asset_id
     DataClass   = "{data_class}"
-    ManagedBy   = "CloudAgilityBroker"
+    ManagedBy   = "MulticloudOptimiser"
     DecisionID  = "{decision_id}"
     Environment = var.environment
   }}
@@ -157,7 +157,7 @@ resource "aws_iam_role" "data_role" {{
   }})
 
   tags = {{
-    ManagedBy  = "CloudAgilityBroker"
+    ManagedBy  = "MulticloudOptimiser"
     DecisionID = "{decision_id}"
   }}
 }}
@@ -211,7 +211,7 @@ output "iam_role_arn" {{
 
 AZURE_TEMPLATE = """\
 # ============================================================
-# Cloud Agility Broker — Generated Terraform (Azure)
+# Multicloud Optimiser — Generated Terraform (Azure)
 # Decision ID : {decision_id}
 # Generated   : {generated_at}
 # Data Asset  : {asset_name}
@@ -270,7 +270,7 @@ resource "azurerm_resource_group" "data_rg" {{
     Company    = var.company_id
     DataAsset  = var.asset_id
     DataClass  = "{data_class}"
-    ManagedBy  = "CloudAgilityBroker"
+    ManagedBy  = "MulticloudOptimiser"
     DecisionID = "{decision_id}"
   }}
 }}
@@ -289,7 +289,7 @@ resource "azurerm_key_vault" "data_kv" {{
   enable_rbac_authorization   = true
 
   tags = {{
-    ManagedBy  = "CloudAgilityBroker"
+    ManagedBy  = "MulticloudOptimiser"
     DecisionID = "{decision_id}"
   }}
 }}
@@ -337,7 +337,7 @@ resource "azurerm_storage_account" "data_sa" {{
     Company    = var.company_id
     DataAsset  = var.asset_id
     DataClass  = "{data_class}"
-    ManagedBy  = "CloudAgilityBroker"
+    ManagedBy  = "MulticloudOptimiser"
     DecisionID = "{decision_id}"
   }}
 }}

@@ -7,7 +7,7 @@
 # Requires venv at ../.venv and: pip install -r requirements.txt
 
 [Unit]
-Description=Cloud Agility Broker (FastAPI)
+Description=Mulyicloud Optimiser (FastAPI)
 After=network.target
 
 [Service]

@@ -42,7 +42,7 @@ def build_json_report(
     audit_logs: list[dict],
 ) -> dict[str, Any]:
     return {
-        "report_type": "Cloud Agility Broker — Decision Report",
+        "report_type": "Multicloud Optimiser — Decision Report",
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "decision": decision,
         "company": company,
@@ -92,7 +92,7 @@ def build_pdf_report(
         fontSize=9, leading=14
     )
 
-    story.append(Paragraph("Cloud Agility Broker", title_style))
+    story.append(Paragraph("Multicloud Optimiser", title_style))
     story.append(Paragraph("Automated Cloud Migration Decision Report", subtitle_style))
     story.append(Paragraph(
         f"Generated: {datetime.utcnow().strftime('%d %B %Y, %H:%M UTC')} &nbsp;|&nbsp; "
@@ -228,7 +228,7 @@ def build_pdf_report(
     story.append(Spacer(1, 0.5 * cm))
     story.append(HRFlowable(width="100%", thickness=0.5, color=colors.grey))
     story.append(Paragraph(
-        "This report was generated automatically by Cloud Agility Broker. "
+        "This report was generated automatically by Multicloud Optimiser. "
         "It is intended for audit, legal, and engineering review purposes.",
         ParagraphStyle("Footer", parent=styles["Normal"], fontSize=7, textColor=colors.grey)
     ))

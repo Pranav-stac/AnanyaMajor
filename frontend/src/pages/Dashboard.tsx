@@ -65,7 +65,7 @@ export default function Dashboard() {
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
-          <p className="text-slate-600 mt-1">Cloud Agility Broker — automated migration decision engine</p>
+          <p className="text-slate-600 mt-1">Multicloud Optimiser — automated migration decision engine</p>
         </div>
         <Link
           to="/evaluate"
